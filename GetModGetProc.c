@@ -25,7 +25,7 @@ void * GetFunctionAddress(char * MyNtdllFunction, PVOID MyDLLBaseAddress) {
 	PWORD Ordinal=(PWORD)((LPBYTE)BaseDLLAddr+pImgExpDir->AddressOfNameOrdinals);
 
 	//Get RVA of the function from the export table
-	for(j=0;j<pImgExpDir->NumberOfFunctions;j++){
+	for(j=0;j<pImgExpDir->NumberOfNames;j++){
         	if(!strcmp(MyNtdllFunction,(char*)BaseDLLAddr+Name[j])){
 			//if function name found, we retrieve the RVA
          		RVA = (uintptr_t)((LPBYTE)Address[Ordinal[j]]);
